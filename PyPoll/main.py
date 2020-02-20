@@ -9,53 +9,38 @@ with open(election_file, newline='') as csvfile:
     csv_header = next(csvreader)
 
 #create empty lists to hold information from csv
-    votes=[]
-    candidates=[]
+    
     #number of votes for candidates
-    num_votes=[]
     votedictionary={}
 
-# iterate over rows in file
+            
+    num_votes = 1
     for row in csvreader:
-        votes.append(row[0])
-        #if not in existing list, add to list of unique candidates
-        if row[2] not in candidates:
-            candidates.append(row[2])
-            num_votes.append(1)
+        if row[2] in votedictionary:
+            candidate_vote= votedictionary.get(row[2],0)[0]+1
+            votedictionary[row[2]] = [candidate_vote, (candidate_vote/num_votes)*100]
         else:
-        #if candidate already exists, add a vote for that candidate
-            candidate_index = candidates.index(row[2])
-            num_votes[candidate_index] += 1
-    print(candidates)
-    print(num_votes)
-#create a dictionary to hold candidate votes
-    for candidate in candidates:
-        votedictionary[candidate]=[0,0]
-        for key, value in votedictionary.items():
-            if candidate == row[2]:
-                value[1]= value[1]+1
-                break
-            else:
-                pass
+            votedictionary[row[2]]=[num_votes,1/num_votes]
+        num_votes += 1
+
+    print(num_votes)     
+
+    print(votedictionary)
 
 
-    print (votedictionary["Khan"])
-    for row in csvreader:
-        #items() method is used to return the list with all dictionary keys with values. 
-        #Returns: A view object that displays a list of a given dictionary's (key, value) tuple pair
-        #iterate through the empty dictionary to add idems
-        for key,value in votedictionary.items():
-            print (f'tuple {votedictionary}')
-    
-
-    
-
-#need a dictionary for the candidates
 
 #final results
     print("Election Results")
     print("--------------------------------")
-    print(f'Total votes: {len(votes)}')
+    #print(f'Total votes: {(num_votes)}')
     print("--------------------------------")
+    print(f'Khan: % ({votedictionary["Khan"][1]})')
+    print(f'Correy: % ({votedictionary["Correy"]})')
+    print(f'Li: % ({votedictionary["Li"]})')
+    #print(f'O\'Tooley: % ({votedictionary["O'\Tooley"]})')
+    #print(num_votes[0])
+    #print(round(num_votes[0]/len(votes)*100),3)
+    #print(f'Winner: {winner}')
+   
     
     
