@@ -31,8 +31,8 @@ with open(budget_csv, newline="") as csvfile:
 
     #Use index function to locate max/min change in revenue list
     #Use the revenue index to index into month list to return date of change 
-        month_max = str(month[revenue_change.index(max_revenue_change)])
-        month_min= str(month[revenue_change.index(min_revenue_change)])
+        month_max = str(month[revenue_change.index(max_revenue_change)+1])
+        month_min= str(month[revenue_change.index(min_revenue_change)+1])
 
         
     print ("Financial Analysis")
