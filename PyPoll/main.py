@@ -27,8 +27,8 @@ with open(election_file, newline='') as csvfile:
 
     
     #determine a winner
-    for value in votedictionary.values():
-        print(value[0]) 
+    #for value in votedictionary.values():
+        #print(value[0]) 
     winner= votedictionary[row[2]][0]
     print(votedictionary)
     print(winner)
