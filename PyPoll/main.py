@@ -1,6 +1,5 @@
 import os
 import csv
-from collections import Counter
 
 election_file = os.path.join("/Users/leah/python-challenge/PyPoll/Resources/election_data.csv")
 with open(election_file, newline='') as csvfile:
@@ -23,24 +22,18 @@ with open(election_file, newline='') as csvfile:
             votedictionary[row[2]]=[num_votes,1/num_votes]
         num_votes += 1
 
-    print(num_votes)     
-
-    print(votedictionary)
-
+    
+    #need to round values
+    #determine a winner
 
 
 #final results
     print("Election Results")
     print("--------------------------------")
-    #print(f'Total votes: {(num_votes)}')
+    print(f'Total votes: {(num_votes)}')
     print("--------------------------------")
-    print(f'Khan: % ({votedictionary["Khan"][1]})')
-    print(f'Correy: % ({votedictionary["Correy"]})')
-    print(f'Li: % ({votedictionary["Li"]})')
-    #print(f'O\'Tooley: % ({votedictionary["O'\Tooley"]})')
-    #print(num_votes[0])
+    print(f'Khan: % {round((votedictionary["Khan"][1]),5)} ({votedictionary["Khan"][0]})')
+    print(f'Correy: % {round((votedictionary["Correy"][1]),4)} ({votedictionary["Correy"][0]})')
+    print(f'Li: % {round((votedictionary["Li"][1]),4)} ({votedictionary["Li"][0]})')
+    print("O'Tooley: % " + str(round((votedictionary["O'Tooley"][1]),4)) + " (" + str(votedictionary["Li"][0])+ ")" )
     #print(round(num_votes[0]/len(votes)*100),3)
-    #print(f'Winner: {winner}')
-   
-    
-    
