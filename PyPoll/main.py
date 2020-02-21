@@ -27,21 +27,31 @@ with open(election_file, newline='') as csvfile:
 
     
     #determine a winner
-    #for value in votedictionary.values():
-        #print(value[0]) 
-    winner= votedictionary[row[2]][0]
-    print(votedictionary)
-    print(winner)
+    
+    
+
+    # comparison value
+    leader = 0
+    # iterate over each unique candidate in dict
+    for key, value in votedictionary.items():
+        # if largest vote count so far, store as top vote count
+        if value[0] > leader:
+            leader = value[0]
+            # store corresponding candidate name
+            winner = key
+        else:
+            pass
+
 
 #final results- round percentages in f'string
     print("Election Results")
     print("--------------------------------")
     print(f'Total votes: {(num_votes)}')
     print("--------------------------------")
-    print(f'Khan: % {round((votedictionary["Khan"][1]),5)} ({votedictionary["Khan"][0]})')
-    print(f'Correy: % {round((votedictionary["Correy"][1]),4)} ({votedictionary["Correy"][0]})')
-    print(f'Li: % {round((votedictionary["Li"][1]),4)} ({votedictionary["Li"][0]})')
-    print("O'Tooley: % " + str(round((votedictionary["O'Tooley"][1]),4)) + " (" + str(votedictionary["O'Tooley"][0])+ ")" )
+    print(f'Khan: %{round((votedictionary["Khan"][1]),5)} ({votedictionary["Khan"][0]})')
+    print(f'Correy: %{round((votedictionary["Correy"][1]),4)} ({votedictionary["Correy"][0]})')
+    print(f'Li: %{round((votedictionary["Li"][1]),4)} ({votedictionary["Li"][0]})')
+    print("O'Tooley: %" + str(round((votedictionary["O'Tooley"][1]),4)) + " (" + str(votedictionary["O'Tooley"][0])+ ")" )
     print("--------------------------------")
-    #print(f'The winner is{winner}!')
+    print(f'Winner: {winner}!')
     print("--------------------------------")
