@@ -6,14 +6,17 @@ with open(election_file, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     #skip header row
     csv_header = next(csvreader)
-
-#create empty lists to hold information from csv
     
-    #number of votes for candidates
-    votedictionary={}
-
-            
+    #empty dictionary to hold information from csvfile
+    votedictionary = {}
     num_votes = 1
+
+
+    #loop through rows to add voting information to dictionary
+    # Key: Row[2]- candidate name
+    # Value: list of candidate votes and percent votes received
+    # Continue adding votes at the end of the loop (before going to next row)
+    
     for row in csvreader:
         if row[2] in votedictionary:
             candidate_vote= votedictionary.get(row[2],0)[0]+1
@@ -23,11 +26,14 @@ with open(election_file, newline='') as csvfile:
         num_votes += 1
 
     
-    #need to round values
     #determine a winner
+    for value in votedictionary.values():
+        print(value[0]) 
+    winner= votedictionary[row[2]][0]
+    print(votedictionary)
+    print(winner)
 
-
-#final results
+#final results- round percentages in f'string
     print("Election Results")
     print("--------------------------------")
     print(f'Total votes: {(num_votes)}')
@@ -35,5 +41,7 @@ with open(election_file, newline='') as csvfile:
     print(f'Khan: % {round((votedictionary["Khan"][1]),5)} ({votedictionary["Khan"][0]})')
     print(f'Correy: % {round((votedictionary["Correy"][1]),4)} ({votedictionary["Correy"][0]})')
     print(f'Li: % {round((votedictionary["Li"][1]),4)} ({votedictionary["Li"][0]})')
-    print("O'Tooley: % " + str(round((votedictionary["O'Tooley"][1]),4)) + " (" + str(votedictionary["Li"][0])+ ")" )
-    #print(round(num_votes[0]/len(votes)*100),3)
+    print("O'Tooley: % " + str(round((votedictionary["O'Tooley"][1]),4)) + " (" + str(votedictionary["O'Tooley"][0])+ ")" )
+    print("--------------------------------")
+    #print(f'The winner is{winner}!')
+    print("--------------------------------")
