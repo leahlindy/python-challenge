@@ -2,7 +2,7 @@
 import os
 import csv
 
-budget_csv= os.path.join("/Users/leah/python-challenge/PyBank/Resources/budget_data.csv")
+budget_csv= os.path.join("./Resources/budget_data.csv")
 
 #create empty lists to hold information from csv
 month = []

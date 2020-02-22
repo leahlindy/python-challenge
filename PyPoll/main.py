@@ -1,7 +1,7 @@
 import os
 import csv
 
-election_file = os.path.join("/Users/leah/python-challenge/PyPoll/Resources/election_data.csv")
+election_file = os.path.join("./Resources/election_data.csv")
 with open(election_file, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     #skip header row
