@@ -42,6 +42,13 @@ with open(budget_csv, newline="") as csvfile:
     print(f'Average change: {round(average_change,2)}')
     print(f'Greatest Increase in Profits: {month_max} (${max_revenue_change})')
     print(f'Greatest Decrease in Profits: {month_min} (${min_revenue_change})')
+    
 
 with open('./output.txt', 'w') as f:
     print("Financial Analysis", file=f)
+    print ("------------------------------",file=f)
+    print (f'Total Months: {len(month)}',file=f)
+    print (f'Total: ${sum(revenue)}',file=f)
+    print(f'Average change: {round(average_change,2)}',file=f)
+    print(f'Greatest Increase in Profits: {month_max} (${max_revenue_change})',file=f)
+    print(f'Greatest Decrease in Profits: {month_min} (${min_revenue_change})',file=f)
